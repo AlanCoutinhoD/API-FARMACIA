@@ -1,7 +1,7 @@
 import { getUserByUsername, verifyPassword } from '../models/login.model.js';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'your_jwt_secret'; // Cambia esto por una clave secreta segura
+const JWT_SECRET = 'jwt'; 
 
 // Manejar el login
 export const login = async (req, res) => {
