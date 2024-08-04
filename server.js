@@ -1,5 +1,5 @@
 import express from 'express';
-import medsRoutes from './routes/meds.routes.js'; // Asegúrate de que esta ruta es correcta
+import medsRoutes from './routes/meds.routes.js';
 import router from './routes/meds.routes.js';
 import salesRoutes from './routes/sales.routes.js';
 import loginRoutes from './routes/login.routes.js'
