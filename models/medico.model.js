@@ -1,9 +1,22 @@
 import { pool } from '../config/db.js';
 
+export const getMedicosByName = async (nombre) => {
+  try {
+    const [rows] = await pool.query(
+      "SELECT * FROM medicos_especialistas WHERE nombre LIKE ?",
+      [`%${nombre}%`] // Usa el operador LIKE para búsqueda parcial
+    );
+    return rows;
+  } catch (error) {
+    console.error("Error al buscar médicos:", error);
+    throw new Error("Database query failed");
+  }
+};
+
 export const getMedicoById = async (id) => {
     try {
       const [rows] = await pool.query('SELECT * FROM medicos_especialistas WHERE id = ?', [id]);
-      return rows[0]; // Retornar el primer resultado (si existe)
+      return rows[0]; 
     } catch (error) {
       console.error('Error al obtener el médico:', error);
       throw new Error('Database query failed');

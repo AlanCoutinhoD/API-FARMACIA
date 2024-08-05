@@ -3,6 +3,31 @@ import { getAllMedicos } from '../models/medico.model.js';
 import { deleteMedicoById } from '../models/medico.model.js';
 import { updateMedico } from '../models/medico.model.js';
 import { getMedicoById } from '../models/medico.model.js';
+import * as medicosModel from '../models/medico.model.js'; 
+
+export const searchMedicosByName = async (req, res) => {
+  try {
+    const nombre = req.params.nombre; // Extrae el nombre del parámetro de la URL
+
+    if (!nombre) {
+      return res.status(400).json({ message: "El nombre es obligatorio en la URL" });
+    }
+
+    // Busca médicos por nombre
+    const medicos = await medicosModel.getMedicosByName(nombre);
+    
+    // Verifica si se encontraron médicos
+    if (medicos.length === 0) {
+      return res.status(404).json({ message: "Médico no encontrado" });
+    }
+
+    res.json(medicos);
+  } catch (error) {
+    console.error("Error en la búsqueda de médicos:", error);
+    res.status(500).json({ message: "Error en el servidor" });
+  }
+};
+
 
 
 export const getMedico = async (req, res) => {

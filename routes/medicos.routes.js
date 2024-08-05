@@ -4,8 +4,12 @@ import { fetchAllMedicos } from '../controllers/medicos.controller.js';
 import { deleteMedico } from '../controllers/medicos.controller.js';
 import { updateMedicoD } from '../controllers/medicos.controller.js';
 import { getMedico } from '../controllers/medicos.controller.js';
+import { searchMedicosByName } from '../controllers/medicos.controller.js';
 
 const router = express.Router();
+
+// Ruta para buscar médicos por nombre
+router.get('/search/:nombre', searchMedicosByName);
 
 // Ruta para obtener un médico por ID
 router.get('/medicos/:id', getMedico);

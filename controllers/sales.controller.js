@@ -9,7 +9,7 @@ import { getSaleById } from '../models/sales.model.js';
 export const getSaleByIdController = async (req, res) => {
     try {
       const { id } = req.params;
-      console.log("ID recibido para búsqueda:", id);  // Para depuración
+      console.log("ID recibido para búsqueda:", id);  
   
       const sale = await getSaleById(id);
      
@@ -35,7 +35,7 @@ export const updateSaleController = async (req, res) => {
       console.log("ID de venta recibido para actualizar:", saleId);
       console.log("Datos de la venta recibidos:", saleData); // Verificar los datos de la venta
   
-      console.log(result); // Añadir este log para depuración
+      console.log(result); 
   
       if (result.affectedRows > 0) {
         res.json({ message: "Sale updated successfully" });

@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import mysql from 'mysql2/promise';
 
-// Configura la conexión con la base de datos
+
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',

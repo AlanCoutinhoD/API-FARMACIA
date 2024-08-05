@@ -1,11 +1,11 @@
-// models/meds.model.js
+
 import { pool } from "../config/db.js";
 
 
 
 export const getMeds = async () => {
   try {
-    // Consulta SQL normal para seleccionar todos los registros de la tabla 'medicamentos'
+    
     const [rows] = await pool.query("SELECT * FROM medicamentos");
     return rows;
   } catch (error) {
@@ -14,7 +14,7 @@ export const getMeds = async () => {
 };
 export const getMedById = async (id_medicamento) => {
   try {
-    // Consulta SQL estándar para obtener un medicamento por su ID
+   
     const [rows] = await pool.query(
       `SELECT * FROM medicamentos WHERE id_medicamento = ?`,
       [id_medicamento]
@@ -26,10 +26,10 @@ export const getMedById = async (id_medicamento) => {
 };
 export const getMedByAny = async (buscar) => {
   try {
-    // Define el término de búsqueda con comodines para coincidencias parciales
+    
     const searchTerm = `%${buscar}%`;
 
-    // Consulta SQL para obtener todos los atributos del medicamento
+   
     const [rows] = await pool.query(
       `SELECT * 
        FROM medicamentos 
@@ -48,18 +48,18 @@ export const getMedByAny = async (buscar) => {
 
 export const addMed = async (medData) => {
   try {
-    // Desestructurar los datos recibidos
+    
     const { nombre_generico_ingresado, nombre_comercial_ingresado, clasificacion_ingresado, 
             presentacion_ingresado, concentracion_ingresado, volumen_ingresado, unidades_totales_ingresado } = medData;
     
-    // Consulta SQL directa para insertar datos
+    
     const query = `
       INSERT INTO medicamentos (nombre_generico, nombre_comercial, clasificacion_medicamento, 
                                 presentacion_medicamento, concentracion, volumen, unidades_totales) 
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
     
-    // Ejecutar la consulta
+    
     const [result] = await pool.query(query, [
       nombre_generico_ingresado, 
       nombre_comercial_ingresado, 
@@ -70,7 +70,7 @@ export const addMed = async (medData) => {
       unidades_totales_ingresado
     ]);
     
-    // Devolver el resultado
+   
     return result;
   } catch (error) {
     console.error('Database query failed:', error);
@@ -158,10 +158,10 @@ export const updateLabOfMed = async (labData) => {
 
 export const deleteMed = async (id_medicamento) => {
   try {
-    // Consulta SQL normal para eliminar un registro basado en el ID
+    
     const [result] = await pool.query("DELETE FROM medicamentos WHERE id_medicamento = ?", [id_medicamento]);
     
-    // Verificar si se ha realizado alguna eliminación
+    
     if (result.affectedRows === 0) {
       throw new Error("No record found with the given ID");
     }

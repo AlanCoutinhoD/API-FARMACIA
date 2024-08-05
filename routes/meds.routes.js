@@ -1,4 +1,3 @@
-// routes/meds.routes.js
 import express from 'express';
 import * as medsController from '../controllers/meds.controller.js';
 

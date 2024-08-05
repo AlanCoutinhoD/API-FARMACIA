@@ -1,4 +1,4 @@
-// controllers/meds.controller.js
+
 import * as medsModel from '../models/meds.model.js';
 
 export const getMeds = async (req, res) => {
