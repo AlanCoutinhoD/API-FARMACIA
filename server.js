@@ -5,6 +5,7 @@ import salesRoutes from './routes/sales.routes.js';
 import loginRoutes from './routes/login.routes.js'
 import medicosRoutes from './routes/medicos.routes.js';
 import distribuidoresRoutes from './routes/distribuidores.routes.js'; 
+import pacientesRoutes from './routes/pacientes.routes.js'
 const app = express();
 const port = 3000;
 import cors from 'cors'; // Importa el paquete CORS
@@ -26,7 +27,7 @@ app.use('/api', medsRoutes); //
 app.use('/login',loginRoutes);
 app.use('/medicos',medicosRoutes);
 app.use('/distribuidores', distribuidoresRoutes);
-
+app.use('/pacientes',pacientesRoutes)
 router.get("/test", (req,res)=> {
   res.send("su");
 });
