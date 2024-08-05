@@ -1,5 +1,5 @@
 import { pool } from '../config/db.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 // Obtener un usuario por su nombre de usuario
 export const getUserByUsername = async (username) => {
